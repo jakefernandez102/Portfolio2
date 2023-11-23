@@ -195,10 +195,12 @@ const ParalaxComponent = () =>
                 bottom: "0!important",
                 marginLeft: "70%!important",
                 float: "right",
-                backgroundImage: `url(/img/2.webp)`,
+                backgroundImage: `url(/img/4.webp)`,
                 backgroundPosition: "bottom",
                 backgroundSize: "contain",
-                zIndex: -1
+                zIndex: -1,
+                filter: "drop-shadow(10px 10px 30px green) grayscale(75%)",
+                
             }}
         >
 
