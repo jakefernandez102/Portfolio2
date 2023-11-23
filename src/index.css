@@ -2,3 +2,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.intro {
+    position: relative;
+}
+
+.intro::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    background-image: url(/img/logos/react-original.svg);
+    background-repeat: repeat;
+
+    bottom: -5px;
+    right: -5px;
+    z-index: 10000;
+}
+
+.intro::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-image: url(/img/logos/mongodb-original.svg);
+    background-repeat: repeat;
+    top: -10px;
+    left: -10px;
+    z-index: 10000;
+}

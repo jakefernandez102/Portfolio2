@@ -66,8 +66,9 @@ const ParalaxComponent = () =>
             style={{ 
                 textAlign: 'center',
             }}
+            className='flex justify-center z-20'
         >
-            <h2 className='animate__animated animate__fadeInTopRight font-ephesis text-9xl font-bold text-white'>Jake Fernandez</h2>
+            <h2 className='animate__animated animate__fadeInTopRight font-ephesis absolute text-center  text-8xl sm:text-9xl font-bold text-white'>Jake Fernandez</h2>
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -77,7 +78,7 @@ const ParalaxComponent = () =>
                 width: '100%',
             }}
         >
-            <div className='w-1/5 absolute bottom-0 right-0 animate__animated animate__fadeInLeft animate__delay-1s filter grayscale'>
+            <div className='w-2/5 sm:w-2/6  md:w-2/6 absolute -z-10 bottom-0 right-0 animate__animated animate__fadeInLeft animate__delay-1s filter grayscale'>
                 <img
                     className='opacity-50 '
                     src="/img/3.webp" alt="Jake's photo" />
@@ -99,9 +100,9 @@ const ParalaxComponent = () =>
         >
             <div data-aos="fade-up" data-aos-duration='3000' className='h-screen flex items-center text-white font-arvo'>
 
-                <div className='w-full md:w-3/4  bg-gray-900 h-1/2 rounded-xl border-2 border-emerald-600 m-auto flex flex-col gap-4 justify-center items-center hover:shadow-lg hover:shadow-emerald-800 transition-all duration-300'>
+                <div className='intro w-full md:w-3/4  bg-gray-900 h-1/2 rounded-xl border-2 border-emerald-600 m-auto flex flex-col gap-4 justify-center items-center hover:shadow-lg hover:shadow-emerald-800 transition-all duration-300'>
                     <h2 className='text-bold text-2xl uppercase'>It&apos;s nice to meet you! </h2>
-                    <p>
+                    <p className='w-2/3'>
                         I am a System Engineer - Web Development - Frontend developer
                     </p>
                     <p className='w-2/3'>
@@ -116,7 +117,7 @@ const ParalaxComponent = () =>
         <ParallaxLayer
             sticky={{ start: window.innerWidth >= 768 ? 2.8 : 3, end: window.innerWidth >= 768 ? 4.3 : 4 }}
             style={{
-                width: `${window.innerWidth > 768 ? '33%' : '100%'}`,
+                width: `${window.innerWidth >= 768 ? '33%' : '100%'}`,
                 backgroundColor: '#022c22',
                 color: 'white',
                 display:'flex',
@@ -151,7 +152,7 @@ const ParalaxComponent = () =>
         <ParallaxLayer
             sticky={{ start: window.innerWidth >= 768 ? 4 : 5, end: window.innerWidth >= 768 ? 5 : 6 }}
             style={{
-                width:`${window.innerWidth > 768 ? '33%' : '100%'}`,
+                width:`${window.innerWidth >= 768 ? '33%' : '100%'}`,
                 marginLeft: `${window.innerWidth >= 768 ? "66%" : '0'}`,
                 backgroundColor: '#012019',
                 color: 'white',
@@ -168,7 +169,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
         <ParallaxLayer
-            offset={6}
+            offset={7}
             speed={0.95}
             style={{
                 zIndex: '5',
