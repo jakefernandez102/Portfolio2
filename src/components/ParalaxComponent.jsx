@@ -1,16 +1,42 @@
 
 import {Parallax,ParallaxLayer} from '@react-spring/parallax';
-import { useRef } from 'react';
-import 'animate.css';
-
-
+import { useRef, useState } from 'react';
+import {config, useSpring,animated} from '@react-spring/web';
+import {Waypoint} from 'react-waypoint'
+import FlipCard from './FlipCard';
 const ParalaxComponent = () =>
 {
-    const ref = useRef(null) 
+    const ref1 = useRef(null) 
+
+    const [isInView, setIsInView] = useState(false);
+    const animation = useSpring({
+    opacity: isInView ? 1 : 0,
+    transform: isInView ? 'translate3d(0, 0, 0) scale(1.1)' : 'translate3d(100%, 0, 0) scale(0.5)',
+    config: config.molasses,
+  });
+
+    const start = 0;
+	const introDuration = 7;
+	const learningDuration = 3.65;
+	const masteryDuration = 7;
+	const helpingDuration = 3.5;
+	const conclusionDuration = 2.75;
+
+	const buffer = 1;
+
+	// computed values, with buffer
+	const introStart = start + 0;
+	const learningStart = introStart + introDuration + buffer;
+	const masteryStart = learningStart + learningDuration + buffer;
+	const helpingStart = masteryStart + masteryDuration + buffer;
+	const conclusionStart = helpingStart + helpingDuration + buffer;
+	const end = conclusionStart + conclusionDuration;
+
+	const totalDuration = end - start;
 
     return (
 <main >
-    <Parallax pages={50} ref={ref} >
+    <Parallax pages={totalDuration} ref={ref1} >
         <ParallaxLayer
             offset={0}
             speed={1}
@@ -149,14 +175,19 @@ const ParalaxComponent = () =>
                 width: '70%',
             }}
             className='pt-[10rem]'
+            
         >
-            <h2 className='text-white text-2xl text-center font-arvo font-bold'>My top Projects</h2>
+            <Waypoint  onEnter={()=> setIsInView(true)} />
+            <animated.h2  style={animation} className='text-white text-2xl text-center font-arvo font-bold'>My top Projects</animated.h2>
+            <Waypoint  
+            bottomOffset='80%'
+            onEnter={()=> setIsInView(false)} />
 
         </ParallaxLayer>
 
         <ParallaxLayer
             offset={6}
-            sticky={{ start: 6, end: 9}}
+            sticky={{ start: 6, end: 8.5}}
             style={{
                 backgroundColor: "transparent",
                 width: "30%",
@@ -164,7 +195,7 @@ const ParalaxComponent = () =>
                 bottom: "0!important",
                 marginLeft: "70%!important",
                 float: "right",
-                backgroundImage: `url(/img/3.webp)`,
+                backgroundImage: `url(/img/2.webp)`,
                 backgroundPosition: "bottom",
                 backgroundSize: "contain",
                 zIndex: -1
@@ -240,6 +271,89 @@ const ParalaxComponent = () =>
                     </div>
                 </div>
             </div>
+        </ParallaxLayer>
+
+        <ParallaxLayer
+            offset={9}
+            speed={0.70}
+            factor={window.innerWidth < 768 ? 1.5 : 1}
+            className='bg-white '
+        >
+        </ParallaxLayer>
+
+        <ParallaxLayer
+            offset={9.1}
+            speed={0.75}
+            className='text-emerald-800 font-arvo '
+        >
+            <h2 className='text-4xl font-bold uppercase text-center'>My Stacks</h2>
+        </ParallaxLayer>
+
+        <ParallaxLayer
+            offset={9.2}
+            factor={window.innerWidth < 768 ? 2.5 : 1}
+            speed={1.25}
+            className='flex flex-col md:flex-row md:gap-11'
+        >
+            <FlipCard
+						body={<h2 className='font-ephesis font-bold text-6xl'>Frontend</h2>}
+						title=""
+						backQuote={true}
+						bgColor="teal"
+						backTitle="Front End Technologies"
+						backBody={[
+                            '/img/logos/figma-original.svg',
+                            '/img/logos/html.svg',
+                            '/img/logos/css3-original.svg',
+                            '/img/logos/sass-original.svg',
+                            '/img/logos/bootstrap.svg',
+                            '/img/logos/tailwindcss-original.svg',
+                            '/img/logos/javascript.svg',
+                            '/img/logos/typescript-original.svg',
+                            '/img/logos/react-original.svg',
+                            '/img/logos/redux-original.svg',
+                            '/img/logos/nextjs-original.svg',
+                            '/img/logos/angularjs.svg',
+                            '/img/logos/vuejs-original.svg',
+                            '/img/logos/php-original.svg',
+                            '/img/logos/gulp.svg',
+                            '/img/logos/socketio-original-wordmark.svg',
+                            ]} />
+
+					<FlipCard
+						title=""
+						body={<h2 className='font-ephesis font-bold text-6xl'>Backend</h2>}
+						backQuote={true}
+						bgColor="royalblue"
+						backBody={[
+                                '/img/logos/csharp.svg',
+                                '/img/logos/express-original.svg',
+                                '/img/logos/firebase.svg',
+                                '/img/logos/jest.svg',
+                                '/img/logos/mongodb-original.svg',
+                                '/img/logos/mysql-original.svg',
+                                '/img/logos/nodejs-original.svg',
+                                '/img/logos/npm-original.svg',
+                                '/img/logos/postgresql-original.svg',
+                                '/img/logos/python-original.svg',
+                                '/img/logos/sequelize-original.svg',
+                            ]}
+						backTitle=""
+					/>
+
+					<FlipCard
+						body={<h2 className='font-ephesis font-bold text-6xl'>DevOps</h2>}
+						title=""
+						backQuote={true}
+						backTitle="Lao-tzu"
+						bgColor="darkslateblue"
+						backBody={[
+                            '/img/logos/docker-original.svg',
+                            '/img/logos/git-original.svg',
+                            '/img/logos/github-original.svg',
+
+                        ]}
+					/>
         </ParallaxLayer>
 
     </Parallax>
