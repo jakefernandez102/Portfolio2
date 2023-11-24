@@ -131,6 +131,18 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
         <ParallaxLayer
+            sticky={{ start: window.innerWidth >= 768 ? 4.6 : 3.5, end: window.innerWidth >= 768 ? 4 : 5 }}
+            speed={1.50}
+            style={{
+                width:`${window.innerWidth >= 768 ? '33%' : '100%'}`,
+            }}
+            className='flex justify-center items-center'
+        >
+            <img src="/img/logos/react.gif" alt="skills image" />
+
+        </ParallaxLayer>
+
+        <ParallaxLayer
             sticky={{ start: window.innerWidth >= 768 ? 3.4 : 4, end: window.innerWidth >= 768 ? 4.5 : 5 }}
             style={{
                 width:`${window.innerWidth >= 768 ? '33%' : '100%'}`,
@@ -148,6 +160,22 @@ const ParalaxComponent = () =>
                 </p>
             </div>
         </ParallaxLayer>
+
+        <ParallaxLayer
+            sticky={{ start: window.innerWidth >= 768 ? 4.8 : 4.48, end: window.innerWidth >= 768 ? 4.5 : 5 }}
+            style={{
+                width:`${window.innerWidth >= 768 ? '33%' : '100%'}`,
+                marginLeft: `${window.innerWidth >= 768 ? "33%" : '0'}`,
+                color: 'white',
+                display:'flex',
+                alignItems:'center'
+            }}
+            className='flex justify-center items-center'
+        >
+            <img src="/img/logos/soft-skills.gif" alt="skills image" />
+
+        </ParallaxLayer>
+
 
         <ParallaxLayer
             sticky={{ start: window.innerWidth >= 768 ? 4 : 5, end: window.innerWidth >= 768 ? 5 : 6 }}
@@ -169,7 +197,23 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
         <ParallaxLayer
-            offset={7}
+            sticky={{ start: window.innerWidth >= 768 ? 5.3 : 5.5, end: window.innerWidth >= 768 ? 5 : 5.5 }}
+            style={{
+                width:`${window.innerWidth >= 768 ? '33%' : '100%'}`,
+                marginLeft: `${window.innerWidth >= 768 ? "66%" : '0'}`,
+
+                color: 'white',
+                display:'flex',
+                alignItems:'center'
+            }}
+            className='flex justify-center items-center'
+        >
+            <img src="/img/logos/student.gif" alt="skills image" />
+
+        </ParallaxLayer>
+
+        <ParallaxLayer
+            offset={window.innerHeight >= 768 ? 5.5 : 7.5}
             speed={0.95}
             style={{
                 zIndex: '5',
@@ -180,14 +224,14 @@ const ParalaxComponent = () =>
         >
             <Waypoint  onEnter={()=> setIsInView(true)} />
             <animated.h2  style={animation} className='text-white text-2xl text-center font-arvo font-bold'>My top Projects</animated.h2>
-            <Waypoint  
-            bottomOffset='80%'
-            onEnter={()=> setIsInView(false)} />
+            {/* <Waypoint  
+            bottomOffset={window.innerHeight >= 768 ? '80%' : '50%'}
+            onEnter={()=> setIsInView(false)} /> */}
 
         </ParallaxLayer>
 
         <ParallaxLayer
-            offset={6}
+            offset={7}
             sticky={{ start: 6, end: 8.5}}
             style={{
                 backgroundColor: "transparent",
@@ -205,29 +249,6 @@ const ParalaxComponent = () =>
             }}
         >
 
-        </ParallaxLayer>
- 
-        <ParallaxLayer
-            offset={6}
-            speed={0.95}
-            style={{
-                zIndex: '5',
-                width: '70%',
-                color: '#fff',
-            }}
-            className='pt-[20rem]'
-        >
-            <div className='bg-gray-950 p-5 m-5 border-2 border-emerald-700 hover:shadow-md hover:shadow-emerald-900'>
-                <div className='flex flex-col items-center gap-3'>
-                    <h3>Project title</h3>
-                    <div className='w-3/4'>
-                        <img src="/img/bg-full.jpg" alt="" />
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam atque dicta iste rerum unde maiores. Doloribus, dolorum. Veritatis, adipisci illo. Illum hic itaque sint nam, minus laudantium cumque eveniet. Libero!</p>
-                    </div>
-                </div>
-            </div>
         </ParallaxLayer>
  
         <ParallaxLayer
@@ -275,9 +296,32 @@ const ParalaxComponent = () =>
                 </div>
             </div>
         </ParallaxLayer>
-
+ 
         <ParallaxLayer
             offset={9}
+            speed={0.95}
+            style={{
+                zIndex: '5',
+                width: '70%',
+                color: '#fff',
+            }}
+            className='pt-[20rem]'
+        >
+            <div className='bg-gray-950 p-5 m-5 border-2 border-emerald-700 hover:shadow-md hover:shadow-emerald-900'>
+                <div className='flex flex-col items-center gap-3'>
+                    <h3>Project title</h3>
+                    <div className='w-3/4'>
+                        <img src="/img/bg-full.jpg" alt="" />
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam atque dicta iste rerum unde maiores. Doloribus, dolorum. Veritatis, adipisci illo. Illum hic itaque sint nam, minus laudantium cumque eveniet. Libero!</p>
+                    </div>
+                </div>
+            </div>
+        </ParallaxLayer>
+
+        <ParallaxLayer
+            offset={10}
             speed={0.70}
             factor={window.innerWidth < 768 ? 1.5 : 1}
             className='bg-white '
@@ -285,7 +329,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
         <ParallaxLayer
-            offset={9.1}
+            offset={10.1}
             speed={0.75}
             className='text-emerald-800 font-arvo '
         >
@@ -293,7 +337,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
         <ParallaxLayer
-            offset={9.2}
+            offset={10.2}
             factor={window.innerWidth < 768 ? 2.5 : 1}
             speed={1.25}
             className='flex flex-col md:flex-row md:gap-11'
