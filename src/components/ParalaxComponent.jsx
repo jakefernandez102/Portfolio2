@@ -729,7 +729,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer> */}
 
         <ParallaxLayer
-            offset={10}
+            offset={window.innerWidth < 768 ? 11 :10}
             speed={0.70}
             factor={window.innerWidth < 768 ? 1.5 : 1}
             className='bg-white '
@@ -737,7 +737,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
         <ParallaxLayer
-            offset={10.1}
+            offset={window.innerWidth < 768 ? 11.1 :10.1}
             speed={0.75}
             className='text-emerald-800 font-arvo '
         >
@@ -745,7 +745,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
         <ParallaxLayer
-            offset={10.2}
+            offset={window.innerWidth < 768 ? 11.2 :10.2}
             factor={window.innerWidth < 768 ? 2.5 : 1}
             speed={1.25}
             className='flex flex-col md:flex-row md:gap-11'
@@ -812,7 +812,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
         <ParallaxLayer
-            sticky={{ start: 11, end:25 }}
+            sticky={{ start: 12, end:25 }}
             className="flex justify-center items-center  bg-gradient-to-r from-emerald-400  to-violet-800 font-arvo  bg-clip-text"
             style={{  zIndex: -100 }}
         >
@@ -821,7 +821,7 @@ const ParalaxComponent = () =>
 
 
         <ParallaxLayer
-            offset={11 + 0.75}
+            offset={12 + 0.75}
             speed={0.3}
             factor={1}
             className='inline-block'
