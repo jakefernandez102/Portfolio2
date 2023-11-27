@@ -4,6 +4,346 @@ import { useRef, useState } from 'react';
 import {config, useSpring,animated} from '@react-spring/web';
 import {Waypoint} from 'react-waypoint'
 import FlipCard from './FlipCard';
+
+const PROJECTS=[
+    {
+        id:6,
+        title:'Coffee Quiosco - NextJS',
+        description:'Created using React with NextJS, TailwindCSS, NodeJS, MongoDB, Socket.io, and more...',
+        image:'/img/CoffeeQuiosco.gif',
+        githubUrl:'https://github.com/jakefernandez102/QuiscoApp',
+        demo:''
+    },
+    {
+        id:7,
+        title:'GuitarLA-Remix-Strapi',
+        description:'created using React ~ Hooks Context MERN ~',
+        image:'/img/GuitarLA_Remix_Strapi.gif',
+        githubUrl:'https://github.com/jakefernandez102/GuitarLA-React-Remix-Strapi',
+        demo:''
+    },
+    {
+        id:8,
+        title:'Appointments Manager',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/ApointmentManagerbg.png',
+        githubUrl:'https://github.com/jakefernandez102/AppointmentsGenerator.git',
+        demo:'https://apointmentgeneratorjakefernandez.netlify.app/'
+    },
+    {
+        id:9,
+        title:'Tip Quoter',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript | Please wait a few seconds to load the data',
+        image:'/img/CotizacionPropinas.png',
+        githubUrl:'https://github.com/jakefernandez102/CotizacionDeServicio',
+        demo:'https://cotizaciondeserviciojakefernandez.netlify.app/'
+    },
+    
+]
+const OTHERPROJECTS = [
+    {
+        id:11,
+        title:'Festival Rock EDM',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/festivalRockEDMbg.png',
+        githubUrl:'https://github.com/jakefernandez102/FestivalMusic.git',
+        demo:'https://festivalmusicjakefernandez.netlify.app'
+    },
+    {
+        id:12,
+        title:'Furniture Store',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/FurnitureStorebg.png',
+        githubUrl:'https://github.com/jakefernandez102/FurnitureStore.git',
+        demo:'https://furniturestorejakefernandez.netlify.app'
+    },
+    {
+        id:13,
+        title:'TechPRO Headphone',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/TechPRObg.png',
+        githubUrl:'https://github.com/jakefernandez102/TechProHeadphones.git',
+        demo:'https://techprojakefernandez.netlify.app/'
+    },
+    {
+        id:14,
+        title:'Architecture Web Site.',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/Architecturebg.png',
+        githubUrl:'https://github.com/jakefernandez102/ArchitectureDesign.git',
+        demo:'https://archdesignjakefernandez.netlify.app'
+    },
+    {
+        id:15,
+        title:'Nucleus App',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/NucleusApp.png',
+        githubUrl:'https://github.com/jakefernandez102/Nucleus-eWallet',
+        demo:'https://nucleusappjakefernandezdev.netlify.app/'
+    },
+    {
+        id:16,
+        title:'Cafeteria Web Site',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/Cafeteria.png',
+        githubUrl:'https://github.com/jakefernandez102/CafeteriaSASS',
+        demo:'https://cafeteriasassjakefernandez.netlify.app/'
+    },
+    {
+        id:17,
+        title:'DeliveryApp',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/DeliveryApp.png',
+        githubUrl:'https://github.com/jakefernandez102/DeliveryApp',
+        demo:'https://deliveryappjakefernandez.netlify.app/'
+    },
+    {
+        id:18,
+        title:'PodCast Web Site',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/Podcast.png',
+        githubUrl:'https://github.com/jakefernandez102/PodCast',
+        demo:'https://podcastappjakefernandez.netlify.app/'
+    },
+    {
+        id:19,
+        title:'Air b&b clon',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/airbnbclon.png',
+        githubUrl:'https://github.com/jakefernandez102/AirbNb-Clon',
+        demo:'https://airbnbclonjakefernandez.netlify.app/'
+    },
+    {
+        id:20,
+        title:'Real State Web Site',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/RealState.png',
+        githubUrl:'https://github.com/jakefernandez102/RealState',
+        demo:'https://realstatejakefernandez.netlify.app/'
+    },
+    {
+        id:21,
+        title:'Carolina Spa Web Site',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/CarolinaSpa.png',
+        githubUrl:'https://github.com/jakefernandez102/CarolinaSpaSite',
+        demo:'https://carolinaspajakefernandez.netlify.app/'
+    },
+    {
+        id:22,
+        title:'Meeti Clon',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/Meeti-bg.png',
+        githubUrl:'https://github.com/jakefernandez102/meeti',
+        demo:'https://meetijakefernandez.netlify.app/'
+    },
+    {
+        id:23,
+        title:'Escuela Cocina Web Site',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/EscuelaCocina-bg.png',
+        githubUrl:'https://github.com/jakefernandez102/EscuelaDeCocina',
+        demo:'https://escuelacocinajakefernandez.netlify.app/'
+    },
+    {
+        id:24,
+        title:'Guitar LA Design',
+        description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
+        image:'/img/GuitarLA.png',
+        githubUrl:'https://github.com/jakefernandez102/GUITARLA',
+        demo:'https://guitarlajakefernandez.netlify.app/'
+    },
+
+//JAVASCRIPT PROJECTS
+    {
+        id:25,
+        title:'Shopping cart Emulator',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/CarShoppingbg.png',
+        githubUrl:'https://github.com/jakefernandez102/ShoppingCar.git',
+        demo:'https://cartshopjakefernandezjs.netlify.app'
+    },
+    {
+        id:26,
+        title:'Email Sender Emulator',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/EmailSenderbg.png',
+        githubUrl:'https://github.com/jakefernandez102/EmailSenderEmulator.git',
+        demo:'https://emailsendersimulatorjakefernandezjs.netlify.app'
+    },
+    {
+        id:27,
+        title:'Filter Emulator',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/filterPage.png',
+        githubUrl:'https://github.com/jakefernandez102/FilterPage.git',
+        demo:'https://searcherjakefernandezjs.netlify.app'
+    },
+    {
+        id:28,
+        title:'Car Insurance Emulator',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/CarInsurancebg.png',
+        githubUrl:'https://github.com/jakefernandez102/CarInsuranceBudgetGenerator.git',
+        demo:'https://carinsurancesimulatorjakefernandezjs.netlify.app/'
+    },
+    {
+        id:29,
+        title:'Shopping cart Emulator',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/CarShoppingbg.png',
+        githubUrl:'https://github.com/jakefernandez102/ShoppingCar.git',
+        demo:'https://cartshopjakefernandezjs.netlify.app'
+    },
+    {
+        id:20,
+        title:'Tweets/ToDo List clon Emulator',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/LocalStorageTweetsbg.png',
+        githubUrl:'https://github.com/jakefernandez102/LocalStorageTweets-TodoList.git',
+        demo:'https://localstoragesimulatorjakefernandezjs.netlify.app/'
+    },
+    {
+        id:31,
+        title:'Spends Manager Emulator',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/SpendsManagerbg.png',
+        githubUrl:'https://github.com/jakefernandez102/SpendsManager.git',
+        demo:'https://spendsmanagersimulatorjakefernandezjs.netlify.app/'
+    },
+    {
+        id:32,
+        title:'Mini users CRM Emilator',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/MiniCRM.png',
+        githubUrl:'https://github.com/jakefernandez102/CRMindexedDB.git',
+        demo:'https://minicrmjakefernandez.netlify.app/'
+    },
+    {
+        id:33,
+        title:'Climate Searcher',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/ClimateSearcher.png',
+        githubUrl:'https://github.com/jakefernandez102/ClimateAPI.git',
+        demo:'https://climateapisjakefernandez.netlify.app/'
+    },
+    {
+        id:34,
+        title:'API Recipes Emulator',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/RecipesAPIbg.png',
+        githubUrl:'https://github.com/jakefernandez102/RecipesSearcher.git',
+        demo:'https://recipessearcherjakefernandez.netlify.app/'
+    },
+    {
+        id:35,
+        title:'PixaBay API',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/PixaBayPicturesAPIbg.png',
+        githubUrl:'https://github.com/jakefernandez102/PixaBayPicturesSearcher.git',
+        demo:'https://picturessearcherjakefernandez.netlify.app/'
+    },
+    {
+        id:36,
+        title:'Top 10 Crypto',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/criptoMoneda.png',
+        githubUrl:'https://github.com/jakefernandez102/CriptomonedasConsult',
+        demo:'https://cryptocurrencyjakefernandez.netlify.app/'
+    },
+    {
+        id:37,
+        title:'Mini CRM using JSONServer',
+        description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
+        image:'/img/CRMJsonServer.png',
+        githubUrl:'https://github.com/jakefernandez102/CRMJsonServer-',
+        demo:'https://crmjsonserverjakefernandez.netlify.app/'
+    },
+    
+    //REACT PROJECTS
+    {
+        id:38,
+        title:'Simple Loan Quoter',
+        description:'Projects created using React ~ Hooks Context Redux MERN ~ ',
+        image:'/img/CotizadorPrestamoReact.png',
+        githubUrl:'https://github.com/jakefernandez102/cotizador-prestamo-react',
+        demo:'https://effulgent-zuccutto-2367f2.netlify.app/'
+    },
+    {
+        id:39,
+        title:"Vet's Customer CRUD - React",
+        description:'Projects created using React ~ Hooks Context Redux MERN ~ ',
+        image:'/img/ReactVetCRUD.png',
+        githubUrl:'https://github.com/jakefernandez102/REACT-VeterinariaClientes-CRUD',
+        demo:'https://loquacious-alfajores-5186d4.netlify.app'
+    },
+    {
+        id:40,
+        title:'Expenses planner',
+        description:'Projects created using React ~ Hooks Context Redux MERN ~ ',
+        image:'/img/ReactBudgetExpenses.png',
+        githubUrl:'https://github.com/jakefernandez102/React-Expenses',
+        demo:'https://lovely-cendol-abea59.netlify.app'
+    },
+    {
+        id:41,
+        title:'CRM simulation',
+        description:'Projects created using React ~ Hooks Context Redux MERN ~ ',
+        image:'/img/ReactCRM-ReactRouterDOM.png',
+        githubUrl:'https://github.com/jakefernandez102/CRM-REACT-ReactRouterDOM/tree/main',
+        demo:'https://famous-paletas-5cc79a.netlify.app'
+    },
+    {
+        id:42,
+        title:'Budget Quote - React - Tawilwind',
+        description:'Projects created using React ~ Hooks Context Redux MERN ~ ',
+        image:'/img/CotizadorReactJS.png',
+        githubUrl:'https://github.com/jakefernandez102/Cotizador-React-Context-Tailwind',
+        demo:'https://playful-palmier-cca7ab.netlify.app'
+    },
+    {
+        id:43,
+        title:'Climate app - React - Tailwind',
+        description:'Projects created using React ~ Hooks Context Redux MERN ~ ',
+        image:'/img/ClimateReactJS.png',
+        githubUrl:'https://github.com/jakefernandez102/Climate-ReactJS-Tailwind/tree/main',
+        demo:'https://fastidious-sawine-e1bf89.netlify.app'
+    },
+    {
+        id:44,
+        title:'CocktailApp Vite/TailwindCss',
+        description:'Projects created using React ~ Hooks Context Redux MERN ~ ',
+        image:'/img/CocktailReact.png',
+        githubUrl:'https://github.com/jakefernandez102/Cocktail-app',
+        demo:'https://storied-salmiakki-9b3ac1.netlify.app'
+    },
+    
+    //ANGULAR PROJECTS
+    {
+        id:45,
+        title:'CRUD - Heroes card',
+        description:'Projects created using Angular',
+        image:'/img/heoresApp.png',
+        githubUrl:'https://github.com/jakefernandez102/Angular-HeroesApp',
+        demo:'https://angular-heroesapp-jakefernandez.netlify.app/index'
+    },
+    {
+        id:46,
+        title:'Countries Searcher',
+        description:'Projects created using Angular',
+        image:'/img/CountriesApp.png',
+        githubUrl:'https://github.com/jakefernandez102/ApiCountries-Angular',
+        demo:'https://countriessearchjakefernandez.netlify.app'
+    },
+    {
+        id:47,
+        title:'Pipes Use - Angular',
+        description:'Projects created using Angular',
+        image:'/img/PipesUse.png',
+        githubUrl:'https://github.com/jakefernandez102/Angular---PipesGuide',
+        demo:'https://amazing-gnome-958258.netlify.app'
+    },
+]
 const ParalaxComponent = () =>
 {
     const ref1 = useRef(null) 
@@ -213,7 +553,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
         <ParallaxLayer
-            offset={window.innerHeight >= 768 ? 5.5 : 7.5}
+            offset={window.innerWidth >= 768 ? 6 : 7}
             speed={0.95}
             style={{
                 zIndex: '5',
@@ -224,15 +564,33 @@ const ParalaxComponent = () =>
         >
             <Waypoint  onEnter={()=> setIsInView(true)} />
             <animated.h2  style={animation} className='text-white text-2xl text-center font-arvo font-bold'>My top Projects</animated.h2>
-            {/* <Waypoint  
+            <Waypoint  
             bottomOffset={window.innerHeight >= 768 ? '80%' : '50%'}
-            onEnter={()=> setIsInView(false)} /> */}
+            onEnter={()=> setIsInView(false)} />
 
         </ParallaxLayer>
 
         <ParallaxLayer
-            offset={7}
-            sticky={{ start: 6, end: 8.5}}
+            offset={window.innerWidth >= 768 ? 6.1 : 7.1}
+            speed={0.95}
+            style={{
+                zIndex: '5',
+                width: '70%',
+            }}
+            className='pt-[10rem]'
+            
+        >
+            <Waypoint  onEnter={()=> setIsInView(true)} />
+            <animated.span  style={animation} className='underline text-white text-sm text-center font-arvo text-amber-500 '>&ldquo;Some projects simulate to be connected with a DB via JSON API hosted on render, it could take some time to load the data.&rdquo;</animated.span>
+            <Waypoint  
+            bottomOffset={window.innerHeight >= 768 ? '80%' : '50%'}
+            onEnter={()=> setIsInView(false)} />
+
+        </ParallaxLayer>
+
+        <ParallaxLayer
+            offset={window.innerWidth >= 768 ? 5.5 : 7}
+            sticky={{ start: 6, end: 9}}
             style={{
                 backgroundColor: "transparent",
                 width: "30%",
@@ -250,9 +608,59 @@ const ParalaxComponent = () =>
         >
 
         </ParallaxLayer>
+
+        {
+            PROJECTS.map((project)=>(
+                <ParallaxLayer 
+                    key={project.id}
+                    offset={window.innerWidth >= 768 ? project.id : (project.id + 1)}
+                    speed={0.95}
+                    style={{
+                        zIndex: '5',
+                        width: '70%',
+                        color: '#fff',
+                    }}
+                    className='pt-[20rem]'
+                >
+                    <div className='bg-gray-950 p-5 m-5 border-2 border-emerald-700 hover:shadow-md hover:shadow-emerald-900'>
+                        <div className='flex flex-col items-center gap-3'>
+                            <h3>{project.title}</h3>
+                            <div className='w-3/4'>
+                                <img src={project.image} alt="project image/gif" />
+                            </div>
+                            <div>
+                                <p>{project.description}</p>
+                            </div>
+                            <div
+                                className='flex gap-3'
+                            >
+                                <a 
+                                    href={project.githubUrl} 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className='text-2xl hover:text-emerald-600 hover:shadow-md hover:shadow-emerald-400 hover:-translate-y-1 rounded-full transition-all'
+                                >
+                                        <i className="bi bi-github"></i>
+                                </a>
+                                {project.demo && (
+                                    <a 
+                                        href={project.demo} 
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className='text-2xl hover:text-emerald-600 hover:shadow hover:shadow-emerald-400 hover:-translate-y-1 rounded-full transition-all'
+                                    >
+                                        <i className="bi bi-browser-chrome"></i>
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </ParallaxLayer>
+            ))
+        }
  
-        <ParallaxLayer
-            offset={7}
+        {/* <ParallaxLayer
+            offset={window.innerWidth >= 768 ? 6 : 7}
             speed={0.95}
             style={{
                 zIndex: '5',
@@ -275,7 +683,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
  
         <ParallaxLayer
-            offset={8}
+            offset={window.innerWidth >= 768 ? 7 : 8}
             speed={0.95}
             style={{
                 zIndex: '5',
@@ -298,7 +706,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
  
         <ParallaxLayer
-            offset={9}
+            offset={window.innerWidth >= 768 ? 8 : 9}
             speed={0.95}
             style={{
                 zIndex: '5',
@@ -318,7 +726,7 @@ const ParalaxComponent = () =>
                     </div>
                 </div>
             </div>
-        </ParallaxLayer>
+        </ParallaxLayer> */}
 
         <ParallaxLayer
             offset={10}
@@ -401,6 +809,66 @@ const ParalaxComponent = () =>
 
                         ]}
 					/>
+        </ParallaxLayer>
+
+        <ParallaxLayer
+            sticky={{ start: 11, end:25 }}
+            className="flex justify-center items-center  bg-gradient-to-r from-emerald-400  to-violet-800 font-arvo  bg-clip-text"
+            style={{  zIndex: -100 }}
+        >
+            <h2 className="text-white text-transparent text-2xl sm:text-5xl md:text-9xl font-bold">Other Projects</h2>
+        </ParallaxLayer>
+
+
+        <ParallaxLayer
+            offset={11 + 0.75}
+            speed={0.3}
+            factor={1}
+            className='inline-block'
+            style={{backgroundColor:'transparent'}}
+            >
+            {   
+                OTHERPROJECTS.map((project)=>(
+                    <div
+                        style={{backgroundFilter: 'blur(6px)'}}
+                        key={project.id} 
+                        className={`${project.id % 2 !== 0 ? 'float-left' : 'float-right'} w-1/2 backdrop-blur-md p-5 m-5 border-2 border-emerald-700 hover:shadow-md hover:shadow-emerald-900 text-white  `}>
+                        <div className='flex flex-col items-center gap-3 font-arvo'>
+                            <div className='bg-gradient-to-r from-violet-400  to-emerald-400 bg-clip-text'>
+                                <h3 className='uppercase text-3xl font-bold font-arvo text-transparent '>{project.title}</h3>
+                            </div>
+                            <div className='w-3/4'>
+                                <img src={project.image} alt="project image/gif" />
+                            </div>
+                            <div>
+                                <p>{project.description}</p>
+                            </div>
+                            <div
+                                className='flex gap-3'
+                            >
+                                <a 
+                                    href={project.githubUrl} 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className='text-2xl hover:text-emerald-600 hover:shadow-md hover:shadow-emerald-400 hover:-translate-y-1 rounded-full transition-all'
+                                >
+                                        <i className="bi bi-github"></i>
+                                </a>
+                                {project.demo && (
+                                    <a 
+                                        href={project.demo} 
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className='text-2xl hover:text-emerald-600 hover:shadow hover:shadow-emerald-400 hover:-translate-y-1 rounded-full transition-all'
+                                    >
+                                        <i className="bi bi-browser-chrome"></i>
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
         </ParallaxLayer>
 
     </Parallax>
