@@ -812,7 +812,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
         <ParallaxLayer
-            sticky={{ start: 12, end:25 }}
+            sticky={{ start: 12, end:28 }}
             className="flex justify-center items-center  bg-gradient-to-r from-emerald-400  to-violet-800 font-arvo  bg-clip-text"
             style={{  zIndex: -100 }}
         >
