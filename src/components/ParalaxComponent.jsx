@@ -376,7 +376,7 @@ const ParalaxComponent = () =>
 
     return (
 <main >
-    <Parallax pages={totalDuration} ref={ref1} >
+    <Parallax pages={window.innerHeight <= 570 ? 37 : 30} ref={ref1} >
         <ParallaxLayer
             offset={0}
             speed={1}
