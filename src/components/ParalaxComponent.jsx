@@ -91,7 +91,7 @@ const OTHERPROJECTS = [
     },
     {
         id:17,
-        title:'DeliveryApp',
+        title:'Delivery App',
         description:'Web design created using only HTML5 - CSS3 - FlexBox - Grid - SASS',
         image:'/img/DeliveryApp.png',
         githubUrl:'https://github.com/jakefernandez102/DeliveryApp',
@@ -197,7 +197,7 @@ const OTHERPROJECTS = [
     },
     {
         id:20,
-        title:'Tweets/ToDo List clon Emulator',
+        title:'Tweets/ ToDo List clon Emulator',
         description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
         image:'/img/LocalStorageTweetsbg.png',
         githubUrl:'https://github.com/jakefernandez102/LocalStorageTweets-TodoList.git',
@@ -253,7 +253,7 @@ const OTHERPROJECTS = [
     },
     {
         id:37,
-        title:'Mini CRM using JSONServer',
+        title:'Mini CRM using JSON Server',
         description:'Projects created using the functionality of HTML5 - CSS3 - Vanilla Javascript',
         image:'/img/CRMJsonServer.png',
         githubUrl:'https://github.com/jakefernandez102/CRMJsonServer-',
@@ -311,7 +311,7 @@ const OTHERPROJECTS = [
     },
     {
         id:44,
-        title:'CocktailApp Vite/TailwindCss',
+        title:'CocktailApp Vite / TailwindCss',
         description:'Projects created using React ~ Hooks Context Redux MERN ~ ',
         image:'/img/CocktailReact.png',
         githubUrl:'https://github.com/jakefernandez102/Cocktail-app',
@@ -376,7 +376,7 @@ const ParalaxComponent = () =>
 
     return (
 <main >
-    <Parallax pages={window.innerHeight >= 571 && window.innerWidth <= 1280 ? 40 : 37} ref={ref1} >
+    <Parallax pages={50} ref={ref1} >
         <ParallaxLayer
             offset={0}
             speed={1}
@@ -812,7 +812,7 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
         <ParallaxLayer
-            sticky={{ start: 12, end:window.innerHeight > 570 ? 25 : 40 }}
+            sticky={{ start: 12, end:47 }}
             className="flex justify-center items-center  bg-gradient-to-r from-emerald-400  to-violet-800 font-arvo  bg-clip-text"
             style={{  zIndex: -100 }}
         >
@@ -820,19 +820,19 @@ const ParalaxComponent = () =>
         </ParallaxLayer>
 
 
+        {OTHERPROJECTS.map((project,idx)=>(
         <ParallaxLayer
-            offset={12 + 0.75}
-            speed={0.3}
+            sticky={ {start: 12 + idx,end: 12 + (idx-0.5) + 1}}
+            speed={0.1}
             factor={1}
-            className='inline-block'
-            style={{backgroundColor:'transparent'}}
+            className='max-w-[1200px]'
+            style={{backgroundColor:'transparent', margin:'0 auto'}}
+                key={project.id} 
             >
-            {   
-                OTHERPROJECTS.map((project)=>(
+            
                     <div
                         style={{backgroundFilter: 'blur(6px)'}}
-                        key={project.id} 
-                        className={`${project.id % 2 !== 0 ? 'float-left' : 'float-right'} w-1/2 backdrop-blur-md p-5 m-5 border-2 border-emerald-700 hover:shadow-md hover:shadow-emerald-900 text-white  `}>
+                        className={`${project.id % 2 !== 0 ? 'float-left' : 'float-right'} w-1/2  backdrop-blur-md p-5 m-5 border-2 border-emerald-700 hover:shadow-md hover:shadow-emerald-900 text-white  `}>
                         <div className='flex flex-col items-center gap-3 font-arvo'>
                             <div className='bg-gradient-to-r from-violet-400  to-emerald-400 bg-clip-text'>
                                 <h3 className='uppercase text-3xl font-bold font-arvo text-transparent '>{project.title}</h3>
@@ -867,9 +867,9 @@ const ParalaxComponent = () =>
                             </div>
                         </div>
                     </div>
-                ))
-            }
+            
         </ParallaxLayer>
+                ))}
 
     </Parallax>
 </main>
